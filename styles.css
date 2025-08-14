@@ -1,0 +1,137 @@
+/* Google Font + base reset */
+/* Manual improvement: custom font + improved spacing/line-height for readability */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --bg:#111316;
+  --panel:#1c1f24;
+  --panel-2:#2a2f36;
+  --text:#eaecef;
+  --muted:#b4b8bf;
+  --accent:#f39c12;
+}
+
+html, body { height: 100%; }
+body {
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+  scroll-behavior: smooth;
+}
+
+/* Utility */
+.container { width: min(1100px, 92vw); margin: 0 auto; }
+
+/* ===== HERO ===== */
+.hero{
+  min-height: 100dvh;
+  display:flex; align-items:center; justify-content:center;
+  background: radial-gradient(60% 60% at 50% 40%, #20242a 0%, #16191d 40%, #111316 100%);
+  text-align:center;
+  padding: 4rem 0;
+}
+.name{ font-size: clamp(2.5rem, 6vw, 4rem); font-weight:700; }
+.subtitle{ color: var(--accent); font-size: clamp(1.1rem, 2.8vw, 1.6rem); margin: 0.75rem 0 1.25rem; font-weight:600; }
+#projectsBtn{
+  padding: 0.9rem 1.4rem;
+  background: var(--accent);
+  border: none; border-radius: 12px;
+  color: white; font-weight:600; cursor:pointer;
+  box-shadow: 0 10px 30px rgba(243,156,18,0.25);
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+}
+#projectsBtn:hover{ transform: translateY(-2px); box-shadow: 0 14px 40px rgba(243,156,18,0.35); }
+#projectsBtn:active{ transform: translateY(0); }
+
+/* ===== SECTIONS BASE ===== */
+section{ padding: 4.5rem 0; }
+section h2{ font-size: clamp(1.6rem, 3.6vw, 2.2rem); text-align:center; margin-bottom: 1.6rem; }
+
+/* ===== ABOUT ===== */
+.about .about-content{
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  width: min(800px, 92vw);
+  margin: 0 auto;
+}
+.about img{
+  width: 160px; height:160px; object-fit:cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.about p{ color: var(--muted); }
+
+@media (max-width: 640px){
+  .about .about-content{ grid-template-columns: 1fr; text-align:center; }
+}
+
+/* ===== SKILLS ===== */
+.skills .skills-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  width: min(900px, 92vw);
+  margin: 0.5rem auto 0;
+}
+.skill-card{
+  background: var(--panel);
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  text-align:center;
+  font-weight: 600;
+  transition: transform .15s ease, background .2s ease;
+}
+.skill-card:hover{ transform: translateY(-3px); background: var(--panel-2); }
+
+/* ===== PROJECTS ===== */
+.projects .projects-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+  width: min(1100px, 92vw);
+  margin: 0.5rem auto 0;
+}
+.project-card{
+  background: var(--panel);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.project-card img{ width:100%; display:block; aspect-ratio: 16 / 10; object-fit: cover; }
+.project-card h3{ padding: 0.9rem 1rem 1.2rem; }
+.project-card:hover{ transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.35); background: var(--panel-2); }
+
+/* ===== CONTACT ===== */
+.contact form{
+  display:flex; flex-direction:column; gap: 0.75rem;
+  width: min(420px, 92vw);
+  margin: 0.5rem auto 0;
+}
+.contact input, .contact textarea{
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid #2d3238;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  outline: none;
+}
+.contact textarea{ min-height: 120px; resize: vertical; }
+.contact button{
+  background: var(--accent);
+  color: white; border: none; border-radius: 12px; padding: 0.9rem 1rem; font-weight: 600; cursor:pointer;
+}
+.contact button:hover{ filter: brightness(0.95); }
+
+/* Small fade-in animation on first paint */
+@keyframes riseFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero .container, .about, .skills, .projects, .contact { animation: riseFade .6s ease both; }

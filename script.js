@@ -1,4 +1,3 @@
-# Foundations-of-AI-Powered-Vibe-Coding2
 // Smooth scroll to projects section when button clicked
 document.getElementById("projectsBtn").addEventListener("click", function () {
   const projects = document.getElementById("projects");
